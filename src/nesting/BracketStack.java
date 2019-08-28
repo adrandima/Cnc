@@ -2,15 +2,19 @@ package nesting;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class BracketStack {
     private int maxSize;
     private int capacity;
     private ArrayList<String> stackArray;
     private int top;
+    int forCount = 0;
+    int whileCount = 0;
 
     public BracketStack(){
        // maxSize = 20;
+
         stackArray = new ArrayList<String>();
         capacity = maxSize;
         //top = -1;
@@ -26,25 +30,29 @@ public class BracketStack {
         else return false;
     }
 
+
+
     public int size()
     {
-        return stackArray.size();
+        forCount=Collections.frequency(stackArray, "for");
+        whileCount=Collections.frequency(stackArray, "while");
+        return forCount+whileCount;
     }
 
     public void push(String x){
 
         stackArray.add(x);
     }
-    public int checkNoBracketLoops(){
+    public void checkNoBracketLoops(){
         //if(stackArray.get())
-            if(stackArray.get(stackArray.size()-1).equals("}")){
-                if(stackArray.get(stackArray.size()-2).equals("while") || stackArray.get(stackArray.size()-2).equals("for")){
+            //if(stackArray.get(stackArray.size()-1).equals("}")){
+                if(stackArray.get(stackArray.size()-1).equals("while") || stackArray.get(stackArray.size()-1).equals("for")){
                     stackArray.remove(stackArray.size() - 1);
-                    return 1;
+                    //return 1;
                 }
 
-            }
-            return 0;
+            //}
+           // return 0;
     }
 
 
@@ -53,10 +61,10 @@ public class BracketStack {
         {
           //  stackArray.remove(stackArray.size() - 1);
            // checkNoBracketLoops();
-            System.out.println("11111111111111111111111111111111:"+stackArray.size());
+          //  System.out.println("11111111111111111111111111111111:"+stackArray.size());
             stackArray.remove(stackArray.size() - 1);
             stackArray.remove(stackArray.size() - 1);
-            System.out.println("11111111111111111111111111111111:"+stackArray.size());
+          //  System.out.println("11111111111111111111111111111111:"+stackArray.size());
         }else
             throw new IllegalStateException("Stack is empty");
 

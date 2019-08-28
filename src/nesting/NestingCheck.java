@@ -20,7 +20,7 @@ public class NestingCheck {
     public void checkBracket(String st){
         System.out.println(BracketCheck.oneLineLoop );
         if(BracketCheck.oneLineLoop == 1){
-            System.out.println("666666666666666666666666666666666666666666666666666666");
+            //System.out.println("666666666666666666666666666666666666666666666666666666");
             BracketCheck.oneLineLoop = 0;
             lineAdd = 1;
         }
