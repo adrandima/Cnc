@@ -9,10 +9,11 @@ public class BracketCheck {
     final String str1 = "for";
     final String str2 = "while";
     static int oneLineLoop;
+    public static int noBracketStatus;
     public static HashMap<Integer, String> loopWordMap = new HashMap<Integer, String>();
     public static HashMap<Integer, String> bracketMap = new HashMap<Integer, String>();
     public static List<Line> lineList = new ArrayList<Line>();
-    int addValue = 0;
+    public static int addValue = 0;
 
     int forCount = 0;
     int whileCount = 0;
@@ -75,6 +76,10 @@ public class BracketCheck {
             Iterator it = sortedLoopWordMap.entrySet().iterator();
             it.hasNext();
             Map.Entry<Integer, String> firstLoopValue = (Map.Entry)it.next();
+            if(BracketCheck.noBracketStatus == 1){
+                addValue = 1;
+                BracketCheck.noBracketStatus = 0;
+            }
             addValues(firstLoopValue);
             for( int a = 1; a<sortedLoopWordMap.size();a++){
 
@@ -99,8 +104,15 @@ public class BracketCheck {
                 firstLoopValue = secondLoopValue;
             }
         }
+        if(NestingCheck.bracketStack.peek().equals("while") || NestingCheck.bracketStack.peek().equals("for")){
+            BracketCheck.noBracketStatus = 1;
+        }else{
+            BracketCheck.noBracketStatus = 0;
+        }
+        lineList.add(new Line(text,NestingCheck.bracketStack.size()+addValue));
 
-        lineList.add(new Line(text,NestingCheck.bracketStack.size()));
+
+        BracketCheck.addValue = 0;
 
     }
 }

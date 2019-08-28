@@ -27,13 +27,22 @@ public class NestingCheck {
         if(st.contains("for") || st.contains("while") || st.contains("{") || st.contains("}")){
             bracketCheck.checkBrackets(st);
         }else{
-            BracketCheck.lineList.add(new Line(st,NestingCheck.bracketStack.size()));
+            if(BracketCheck.noBracketStatus == 1){
+                BracketCheck.addValue = 1;
+                BracketCheck.noBracketStatus = 0;
+                BracketCheck.lineList.add(new Line(st,NestingCheck.bracketStack.size()));
+                NestingCheck.bracketStack.oneTimePop();
+            }else{
+                BracketCheck.lineList.add(new Line(st,NestingCheck.bracketStack.size()+BracketCheck.addValue));
+            }
+
+
 /*            for (int i = -1; (i = st.indexOf("}", i + 1)) != -1; i++) {
                 bracketStack.pop();
                 BracketCheck.bracketMap.put(i,"}");
                 System.out.println(i);
             }*/
-
+            BracketCheck.addValue = 0;
         }
 
             System.out.println(BracketCheck.lineList.get(BracketCheck.lineList.size()-1).toString());

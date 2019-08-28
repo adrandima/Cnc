@@ -70,12 +70,26 @@ public class BracketStack {
 
     }
 
+    public void oneTimePop(){
+        if (!isEmpty())
+        {
+            //  stackArray.remove(stackArray.size() - 1);
+            // checkNoBracketLoops();
+            //  System.out.println("11111111111111111111111111111111:"+stackArray.size());
+
+            stackArray.remove(stackArray.size() - 1);
+            //  System.out.println("11111111111111111111111111111111:"+stackArray.size());
+        }else
+            throw new IllegalStateException("Stack is empty");
+
+    }
+
     public String peek()
     {
         if(!isEmpty()){
             return stackArray.get(stackArray.size() - 1);
         }else{
-            throw new IllegalStateException("Stack is empty !");
+            return "empty";
         }
     }
 
