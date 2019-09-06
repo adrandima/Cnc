@@ -17,7 +17,7 @@ public class FindFunction {
 
 
     public boolean checkingFunctions(String st,int loopValue){
-        System.out.println("recursive function value"+FindFunction.recursiveFunctionStatus);
+        //System.out.println("recursive function value"+FindFunction.recursiveFunctionStatus);
         checkedMethodCallArray.removeAll(checkedMethodCallArray);
         Pattern pattern = Pattern.compile(checkMethod);
         Matcher matcher = pattern.matcher(st);
@@ -30,7 +30,7 @@ public class FindFunction {
            // NestingCheck.bracketStack.push("function");
             FindFunction.recursiveFunctionStatus = 0;
             addValues(st,recursiveFunctionStatus+loopValue,"function");
-            System.out.println("Method:"+methodName);
+            //System.out.println("Method:"+methodName);
         }else{
             addValues(st,recursiveFunctionStatus+loopValue,"non");
             try {
@@ -45,12 +45,12 @@ public class FindFunction {
                     }
                 }
             }catch (NullPointerException e){
-                System.out.print("Error");
+                //System.out.print("Error");
             }
         }
 
         for(String list:checkedMethodCallArray){
-            System.out.println(list+"***"+functionName);
+            //System.out.println(list+"***"+functionName);
             if (functionName.equals(list+"(")) {
                 System.out.println("True");
                 return true;

@@ -20,7 +20,7 @@ public class BracketCheck {
     int count = 0;
 
     public void addValues(Map.Entry<Integer, String> firstLoopValue){
-
+        System.out.println("Loop Value:"+firstLoopValue);
         if (firstLoopValue.getValue().equalsIgnoreCase("for") || firstLoopValue.getValue().equalsIgnoreCase("while")){
             if(NestingCheck.bracketStack.isEmpty()==false){
                 NestingCheck.bracketStack.checkNoBracketLoops();
@@ -29,8 +29,8 @@ public class BracketCheck {
         }else if(firstLoopValue.getValue().equalsIgnoreCase("{")){
             NestingCheck.bracketStack.push(firstLoopValue.getValue());
         }else if(firstLoopValue.getValue().equalsIgnoreCase("}")){
-            NestingCheck.bracketStack.checkNoBracketLoops();
-            NestingCheck.bracketStack.pop();
+            NestingCheck.bracketStack.popStack();
+            //NestingCheck.bracketStack.pop();
         }
     }
 
@@ -71,6 +71,7 @@ public class BracketCheck {
                 addValue = 1;
                 BracketCheck.noBracketStatus = 0;
             }
+            //System.out.println("Loop1 Value:"+firstLoopValue);
             addValues(firstLoopValue);
             for( int a = 1; a<sortedLoopWordMap.size();a++){
 
@@ -80,6 +81,7 @@ public class BracketCheck {
                     if(secondLoopValue.getValue().contains("while") || secondLoopValue.getValue().contains("for")){
 
                     }else  if(secondLoopValue.getValue().contains("{")){
+                       // System.out.println("Loop Value2:"+secondLoopValue);
                         addValues(secondLoopValue);
                     }
                 }else{

@@ -37,16 +37,18 @@ public class NestingCheck {
         String st;
         while ((st = br.readLine()) != null) {
             int loopValue = checkBracket(st);
-            System.out.println("CheckBracket Value:"+loopValue);
+            //System.out.println("CheckBracket Value:"+loopValue);
             if(findFunction.checkingFunctions(st,loopValue)){
                 FindFunction.recursiveFunctionStatus = 1;
-                System.out.println("After calling"+FindFunction.recursiveFunctionStatus);
+                //System.out.println("After calling"+FindFunction.recursiveFunctionStatus);
                 findFunction.editCncValues();
-                display();
+
             }
 
 
+
         }
+        display();
         return true;
     }
 
@@ -65,7 +67,7 @@ public class NestingCheck {
 
     public int checkBracket(String st){
            // findFunctionStatus = findFunctions(st);
-            //System.out.println(BracketCheck.oneLineLoop );
+           // System.out.println(NestingCheck.bracketStack.peek());
             if(BracketCheck.oneLineLoop == 1){
                 BracketCheck.oneLineLoop = 0;
                 lineAdd = 1;
@@ -83,7 +85,7 @@ public class NestingCheck {
                 }
                 BracketCheck.addValue = 0;
             }
-                System.out.println("Values**"+BracketCheck.lineList.get(BracketCheck.lineList.size()-1).toString());
+                //System.out.println("Values**"+BracketCheck.lineList.get(BracketCheck.lineList.size()-1).toString());
             return BracketCheck.lineList.get(BracketCheck.lineList.size()-1).getValue();
     }
 

@@ -1,6 +1,6 @@
 public class Gaa{
-    int a =0;
-    public int a(as){
+int a =0;
+public int a(as) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the number of rows to be printed");
         int rows = sc.nextInt();
@@ -18,5 +18,7 @@ public class Gaa{
             i++;
         }
         a(i);
+        int i=1;
     }
+    int a =0;
 }

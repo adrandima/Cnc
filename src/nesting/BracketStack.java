@@ -46,8 +46,9 @@ public class BracketStack {
     public void checkNoBracketLoops(){
         //if(stackArray.get())
             //if(stackArray.get(stackArray.size()-1).equals("}")){
+
                 if(stackArray.get(stackArray.size()-1).equals("while") || stackArray.get(stackArray.size()-1).equals("for")){
-                    stackArray.remove(stackArray.size() - 1);
+                    pop();//stackArray.remove(stackArray.size() - 1);
                     //return 1;
                 }
 
@@ -55,6 +56,17 @@ public class BracketStack {
            // return 0;
     }
 
+    public void  popStack(){
+        if(stackArray.get(stackArray.size()-1).equals("{")){
+            if(stackArray.get(stackArray.size()-2).equals("while") || stackArray.get(stackArray.size()-2).equals("for")){
+                pop();
+            }
+
+        }else{
+            stackArray.remove(stackArray.size() - 1);
+        }
+
+    }
 
     public void pop(){
         if (!isEmpty())
