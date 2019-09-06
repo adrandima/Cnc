@@ -22,7 +22,6 @@ public class BracketCheck {
     public void addValues(Map.Entry<Integer, String> firstLoopValue){
 
         if (firstLoopValue.getValue().equalsIgnoreCase("for") || firstLoopValue.getValue().equalsIgnoreCase("while")){
-
             if(NestingCheck.bracketStack.isEmpty()==false){
                 NestingCheck.bracketStack.checkNoBracketLoops();
             }
@@ -42,7 +41,6 @@ public class BracketCheck {
         forCount = StringUtils.countMatches(text, str1);
         whileCount = StringUtils.countMatches(text, str2);
         count = forCount + whileCount;
-
             for (int i = -1; (i = text.indexOf(str1, i + 1)) != -1; i++) {
                 loopWordMap.put(i,"for");
             }
@@ -58,20 +56,13 @@ public class BracketCheck {
                 loopWordMap.put(i,"}");
             }
 
-        //System.out.println(loopWordMap);
-
         Map<Integer, String> sortedLoopWordMap = new TreeMap<Integer, String>(loopWordMap);
         if(sortedLoopWordMap.size()>0) {
             Set set2 = sortedLoopWordMap.entrySet();
             Iterator iterator2 = set2.iterator();
             while (iterator2.hasNext()) {
                 Map.Entry pair = (Map.Entry) iterator2.next();
-               // System.out.print(pair.getKey() + ": ");
-               // System.out.println(pair.getValue());
             }
-
-            //Map.Entry<Integer, String> first = ((TreeMap<Integer, String>) sortedLoopWordMap).firstEntry();
-           // System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^"+first);
 
             Iterator it = sortedLoopWordMap.entrySet().iterator();
             it.hasNext();
@@ -84,19 +75,12 @@ public class BracketCheck {
             for( int a = 1; a<sortedLoopWordMap.size();a++){
 
                 Map.Entry<Integer, String> secondLoopValue = (Map.Entry)it.next();
-                //System.out.println(firstLoopValue+"::::::::::::::::"+secondLoopValue);
 
                 if(firstLoopValue.getValue().equals("while")||firstLoopValue.getValue().equals("for")){
                     if(secondLoopValue.getValue().contains("while") || secondLoopValue.getValue().contains("for")){
-                       // System.out.println("*********************************");
-                      //  System.out.println("PEEK"+NestingCheck.bracketStack.peek());
+
                     }else  if(secondLoopValue.getValue().contains("{")){
                         addValues(secondLoopValue);
-                        //System.out.print("*****************333333333333333333****************");
-                        //System.out.println("PEEK"+NestingCheck.bracketStack.peek());
-                        //NestingCheck.bracketStack.push(2);
-                        //oneLineLoop = 1;
-
                     }
                 }else{
                     addValues(secondLoopValue);
@@ -110,8 +94,6 @@ public class BracketCheck {
             BracketCheck.noBracketStatus = 0;
         }
         lineList.add(new Line(text,NestingCheck.bracketStack.size()+addValue));
-
-
         BracketCheck.addValue = 0;
 
     }

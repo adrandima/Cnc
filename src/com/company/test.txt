@@ -1,9 +1,12 @@
-
+public class Gaa{
+    int a =0;
+    public int a(as){
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the number of rows to be printed");
         int rows = sc.nextInt();
 
-        for (int i = 1; i <= rows; i++) {
+        for (int i = 1; i <= rows; i++)
+        {System.out.println();
             for(int j = 1; j <= i; j++)
                 System.out.print("* ");
             System.out.println();
@@ -14,3 +17,6 @@
                 System.out.println(i);
             i++;
         }
+        a(i);
+    }
+}
