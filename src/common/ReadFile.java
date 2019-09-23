@@ -13,7 +13,7 @@ public class ReadFile {
 
     public BufferedReader getFile() throws IOException {
 
-        File file = new File("/root/Projects/NestingProject/src/com/company/test.txt");
+        File file = new File("/root/IdeaProjects/NestingProject/src/com/company/test.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         return br;
     }
